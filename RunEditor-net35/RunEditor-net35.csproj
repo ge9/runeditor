@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net35-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+	  <RootNamespace>RunEditor</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\RunEditor\AssemblyInfo.cs" Link="AssemblyInfo.cs" />
+    <Compile Include="..\RunEditor\MainWindow.xaml.cs" Link="MainWindow.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\RunEditor\RunEditor.csproj" Link="RunEditor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="..\RunEditor\MainWindow.xaml" Link="MainWindow.xaml" />
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+</Project>
