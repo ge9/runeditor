@@ -1,0 +1,26 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+      - name: Restore
+        run: dotnet restore RunEditor.sln
+# Since we don't have .NET Framework 3.5 in latest Windows instance https://github.com/actions/setup-dotnet/issues/367(), we build only the 4.x version
+      - name: Build
+        run: msbuild RunEditor\RunEditor.csproj /p:Configuration=Release
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            RunEditor*/bin/Release/**/*.exe
